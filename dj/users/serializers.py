@@ -1,6 +1,21 @@
 from rest_framework import serializers
-from .models import User
+from rest_framework_simplejwt.tokens import RefreshToken
 from djoser.serializers import UserSerializer
+from .models import User
+
+
+class TokenDestroySerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+
+    def validate(self, attrs):
+        refresh = RefreshToken(attrs['refresh'])
+
+        try:
+            refresh.blacklist()
+        except AttributeError:
+            pass
+
+        return {}
 
 
 class MyUserSerializer(UserSerializer):
