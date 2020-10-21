@@ -13,11 +13,11 @@ drf-yasg = "*"
 djoser = "*"
 djangorestframework = "==3.11.1"
 django-cors-headers = "*"
-django-environ = "*"
 gunicorn = "*"
 whitenoise = "*"
 psycopg2 = "*"
 python-dotenv = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"

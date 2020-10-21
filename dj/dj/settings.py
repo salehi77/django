@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'djoser',
     'drf_yasg',
     'corsheaders',
+    'shop',
     'temp',
 ]
 
@@ -99,7 +100,11 @@ DATABASES = {
         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
         'HOST': os.getenv('DATABASE_HOST'),
         'PORT': os.getenv('DATABASE_PORT'),
-    }
+    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
 }
 
 
@@ -140,7 +145,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 REST_FRAMEWORK = {
@@ -187,3 +191,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = 'default from email'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
