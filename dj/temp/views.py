@@ -6,11 +6,11 @@ from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 
 class IndexView(APIView):
 
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
 
-        # print(dir(request))
+        print('*************************')
 
         # return Response({'lll': 'iii'}, HTTP_400_BAD_REQUEST)
         return Response({'lll': 'iii'}, HTTP_200_OK)
