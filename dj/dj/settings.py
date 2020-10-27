@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import dotenv
+import dj_database_url
+import datetime
 
 dotenv.load_dotenv()
 # print(os.getenv('SECRET_KEY'))
@@ -94,18 +96,9 @@ WSGI_APPLICATION = 'dj.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': os.getenv('DATABASE_NAME'),
-    #     'USER': os.getenv('DATABASE_USER'),
-    #     'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-    #     'HOST': os.getenv('DATABASE_HOST'),
-    #     'PORT': os.getenv('DATABASE_PORT'),
-    # },
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
+    'default': dj_database_url.parse('sqlite:///' + os.path.join(BASE_DIR / 'db.sqlite3')),
+    # 'default': dj_database_url.parse('postgres://postgres:orange@127.0.0.1:5432/pg'),
+    # 'default': dj_database_url.parse(os.getenv('DATABASE_URL')),
 }
 
 
@@ -175,6 +168,8 @@ DJOSER = {
 }
 
 SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
 }
@@ -192,7 +187,7 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-DEFAULT_FROM_EMAIL = 'default from email'
+DEFAULT_FROM_EMAIL = 'FromServer'
 
 
 MEDIA_URL = '/media/'

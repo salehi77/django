@@ -19,6 +19,7 @@ whitenoise = "*"
 psycopg2 = "*"
 python-dotenv = "*"
 pillow = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.8"

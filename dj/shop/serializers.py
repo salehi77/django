@@ -7,8 +7,8 @@ from django.core import exceptions
 class ReadCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Category
-        fields = ('id', 'parent', 'products', 'subcat')
-        # fields = ('id', 'parent')
+        # fields = ('id', 'parent', 'products', 'subcat')
+        fields = '__all__'
 
     def get_fields(self):
         fields = super(ReadCategorySerializer, self).get_fields()
@@ -22,6 +22,7 @@ class WriteCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Category
         fields = '__all__'
+        read_only_fields = ('slug_title',)
 
 
 
