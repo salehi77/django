@@ -97,9 +97,9 @@ WSGI_APPLICATION = 'dj.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse('sqlite:///' + os.path.join(BASE_DIR / 'db.sqlite3')),
+    # 'default': dj_database_url.parse('sqlite:///' + os.path.join(BASE_DIR / 'db.sqlite3')),
     # 'default': dj_database_url.parse('postgres://postgres:orange@127.0.0.1:5432/pg'),
-    # 'default': dj_database_url.parse(os.getenv('DATABASE_URL')),
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL')),
 }
 
 
