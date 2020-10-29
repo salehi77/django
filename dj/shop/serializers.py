@@ -33,3 +33,4 @@ class ProductSerializer(serializers.ModelSerializer):
         model = models.Product
         # fields = ('id',)
         fields = '__all__'
+        read_only_fields = ('slug_title',)

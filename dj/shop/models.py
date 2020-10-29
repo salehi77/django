@@ -3,6 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth import get_user_model
 from django.core import exceptions
 from django.utils.text import slugify
+from arvanstorage.storages import MyStorage
 User = get_user_model()
 
 
@@ -15,7 +16,7 @@ class Category(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='categories')
+    image = models.ImageField(storage=MyStorage)
     imageAlt = models.CharField(max_length=255)
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL, related_name='subcat')
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='categories')
@@ -38,10 +39,11 @@ class Category(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
+    slug_title = models.SlugField(max_length=255, unique=True, allow_unicode=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='products')
+    image = models.ImageField(storage=MyStorage)
     imageAlt = models.CharField(max_length=255)
     discount = models.DecimalField(
         max_digits=5, decimal_places=2,
@@ -58,6 +60,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+
+    def save(self, *args, **kwargs):
+        self.slug_title = slugify(self.title, allow_unicode=True)
+        return super(Product, self).save(*args, **kwargs)
 
 
 # class ProductDetail(models.Model):

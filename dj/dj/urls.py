@@ -45,7 +45,6 @@ urlpatterns = [
     path('auth/', include('users.urls')),
     path('shop/', include('shop.urls')),
     path('temp/', include('temp.urls')),
-    path('arvan/', include('arvanstorage.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
