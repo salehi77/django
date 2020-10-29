@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'shop',
     'temp',
+    'arvanstorage',
 ]
 
 MIDDLEWARE = [
@@ -192,3 +193,9 @@ DEFAULT_FROM_EMAIL = 'FromServer'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+ARVAN_ACCESS_KEY_ID = os.getenv('ARVAN_ACCESS_KEY_ID')
+ARVAN_SECRET_ACCESS_KEY = os.getenv('ARVAN_SECRET_ACCESS_KEY')
+ARVAN_S3_ENDPOINT_URL = os.getenv('ARVAN_S3_ENDPOINT_URL')
+ARVAN_STORAGE_BUCKET_NAME = os.getenv('ARVAN_STORAGE_BUCKET_NAME')

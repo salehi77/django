@@ -20,7 +20,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.conf import settings
 from django.conf.urls.static import static
-# from django.contrib.auth.models import User
+
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -45,6 +45,7 @@ urlpatterns = [
     path('auth/', include('users.urls')),
     path('shop/', include('shop.urls')),
     path('temp/', include('temp.urls')),
+    path('arvan/', include('arvanstorage.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
