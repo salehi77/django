@@ -21,6 +21,7 @@ dj-database-url = "*"
 django-extensions = "*"
 boto3 = "*"
 autopep8 = "*"
+django-oauth-toolkit = "*"
 
 [requires]
 python_version = "3.8"

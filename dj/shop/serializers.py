@@ -29,8 +29,11 @@ class WriteCategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    rate = serializers.ReadOnlyField(default=4.5)
+    reviews = serializers.ReadOnlyField(default=12)
+
     class Meta:
         model = models.Product
-        # fields = ('id',)
-        fields = '__all__'
+        fields = ('title', 'slug_title', 'image', 'imageAlt', 'price', 'rate', 'reviews')
+        # fields = '__all__'
         read_only_fields = ('slug_title',)

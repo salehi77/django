@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
 
 CORS_ALLOWED_ORIGINS = [
     'https://next-seven-pi.vercel.app',
@@ -98,7 +98,6 @@ WSGI_APPLICATION = 'dj.wsgi.application'
 
 DATABASES = {
     # 'default': dj_database_url.parse('sqlite:///' + os.path.join(BASE_DIR / 'db.sqlite3')),
-    # 'default': dj_database_url.parse('postgres://postgres:orange@127.0.0.1:5432/pg'),
     'default': dj_database_url.parse(os.getenv('DATABASE_URL')),
 }
 
@@ -145,8 +144,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication'
     ]
 }
 
@@ -194,8 +191,8 @@ DEFAULT_FROM_EMAIL = 'FromServer'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
+DEFAULT_FILE_STORAGE = 'arvanstorage.storages.MyStorage'
 ARVAN_ACCESS_KEY_ID = os.getenv('ARVAN_ACCESS_KEY_ID')
 ARVAN_SECRET_ACCESS_KEY = os.getenv('ARVAN_SECRET_ACCESS_KEY')
 ARVAN_S3_ENDPOINT_URL = os.getenv('ARVAN_S3_ENDPOINT_URL')
-ARVAN_STORAGE_BUCKET_NAME = os.getenv('ARVAN_STORAGE_BUCKET_NAME')
+ARVAN_STORAGE_BUCKET_NAME = 'django-seven'
