@@ -150,7 +150,6 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'users.User'
 
 
-
 DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
@@ -173,7 +172,6 @@ SIMPLE_JWT = {
 }
 
 
-
 DOMAIN = 'localhost:3000'
 SITE_NAME = 'Shop Website'
 
@@ -194,5 +192,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_FILE_STORAGE = 'arvanstorage.storages.MyStorage'
 ARVAN_ACCESS_KEY_ID = os.getenv('ARVAN_ACCESS_KEY_ID')
 ARVAN_SECRET_ACCESS_KEY = os.getenv('ARVAN_SECRET_ACCESS_KEY')
-ARVAN_S3_ENDPOINT_URL = os.getenv('ARVAN_S3_ENDPOINT_URL')
+ARVAN_S3_ENDPOINT_URL = 'https://s3.ir-thr-at1.arvanstorage.com'
 ARVAN_STORAGE_BUCKET_NAME = 'django-seven'
