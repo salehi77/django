@@ -1,1 +1,1 @@
-web: gunicorn --chdir dj dj.wsgi
+web: uwsgi dj/dj_uwsgi.ini

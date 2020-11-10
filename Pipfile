@@ -22,6 +22,7 @@ boto3 = "*"
 autopep8 = "*"
 django-oauth-toolkit = "*"
 psycopg2-binary = "*"
+uwsgi = "*"
 
 [requires]
 python_version = "3.8"
