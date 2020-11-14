@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from . import models
 from django.core import exceptions
+from django.db.models import Avg, Count, Max, Min
 
 
 
@@ -29,11 +30,8 @@ class WriteCategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    rate = serializers.ReadOnlyField(default=4.5)
-    reviews = serializers.ReadOnlyField(default=12)
-
     class Meta:
         model = models.Product
-        fields = ('title', 'slug_title', 'image', 'imageAlt', 'price', 'rate', 'reviews')
+        fields = ('title', 'slug_title', 'image', 'imageAlt', 'price', 'average_rate', 'count_reviews',)
         # fields = '__all__'
         read_only_fields = ('slug_title',)

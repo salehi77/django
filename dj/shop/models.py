@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth import get_user_model
 from django.core import exceptions
 from django.utils.text import slugify
-# from arvanstorage.storages import MyStorage
+from django.db.models import Avg, Count, Max, Min
 User = get_user_model()
 
 
@@ -56,7 +56,13 @@ class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
 
+    @property
+    def average_rate(self):
+        return self.rates.aggregate(Avg('rate'))['rate__avg']
 
+    @property
+    def count_reviews(self):
+        return self.rates.exclude(review='').aggregate(Count('review'))['review__count']
 
     def __str__(self):
         return self.title
@@ -80,14 +86,14 @@ class Product(models.Model):
 
 
 class Rate(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='rates')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='rates')
     rate = models.IntegerField(
         validators=[
             MaxValueValidator(5),
             MinValueValidator(1)
         ])
-    review = models.TextField(null=True, blank=True)
+    review = models.TextField(null=True, blank=True, default='')
 
     class Meta:
         unique_together = ['user', 'product']

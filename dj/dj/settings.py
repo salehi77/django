@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'users',
@@ -68,7 +67,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'dj.urls'
@@ -192,4 +190,4 @@ DEFAULT_FILE_STORAGE = 'arvanstorage.storages.MyStorage'
 ARVAN_ACCESS_KEY_ID = os.getenv('ARVAN_ACCESS_KEY_ID')
 ARVAN_SECRET_ACCESS_KEY = os.getenv('ARVAN_SECRET_ACCESS_KEY')
 ARVAN_S3_ENDPOINT_URL = 'https://s3.ir-thr-at1.arvanstorage.com'
-ARVAN_STORAGE_BUCKET_NAME = 'django-seven'
+ARVAN_STORAGE_BUCKET_NAME = os.getenv('ARVAN_STORAGE_BUCKET_NAME')

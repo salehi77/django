@@ -2,6 +2,7 @@ from rest_framework import viewsets, views
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from . import serializers, models, permissions
+from django.db.models import Avg, Count, Max, Min
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
