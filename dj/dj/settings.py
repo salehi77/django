@@ -28,6 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+
+DOMAIN = os.getenv('DOMAIN')
+SITE_NAME = 'Shop'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -54,7 +58,6 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'shop',
-    'temp',
     'arvanstorage',
 ]
 
@@ -169,8 +172,6 @@ SIMPLE_JWT = {
 }
 
 
-DOMAIN = 'localhost:3000'
-SITE_NAME = 'Shop Website'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

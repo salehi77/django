@@ -1,94 +1,98 @@
 {% load static %}
-{% load i18n %}
 
 {% block subject %}
-{% blocktrans %}Account activation on {{ site_name }}{% endblocktrans %}
-{% endblock subject %}
+[{{ site_name }}] Active your account
+{% endblock %}
 
 
 {% block html_body %}
 
 <head>
-  <link rel="stylesheet" type="text/css" href="http://localhost:8000/static/temp/style/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'users/main.css' %}">
 </head>
 
-<body link="#00a5b5" vlink="#00a5b5" alink="#00a5b5">
 
-  <table class=" main contenttable" align="center"
-    style="font-weight: normal;border-collapse: collapse;border: 0;margin-left: auto;margin-right: auto;padding: 0;font-family: Arial, sans-serif;color: #555559;background-color: white;font-size: 16px;line-height: 26px;width: 600px;">
+<body>
+  <table role="presentation" cellpadding="0" cellspacing="0" class="body">
     <tr>
-      <td class="border"
-        style="border-collapse: collapse;border: 1px solid #eeeff0;margin: 0;padding: 0;-webkit-text-size-adjust: none;color: #555559;font-family: Arial, sans-serif;font-size: 16px;line-height: 26px;">
-        <table
-          style="font-weight: normal;border-collapse: collapse;border: 0;margin: 0;padding: 0;font-family: Arial, sans-serif;">
-          <tr>
-            <td valign="top" class="side title"
-              style="border-collapse: collapse;border: 0;margin: 0;padding: 20px;-webkit-text-size-adjust: none;color: #555559;font-family: Arial, sans-serif;font-size: 16px;line-height: 26px;vertical-align: top;background-color: white;border-top: none;">
-              <table
-                style="font-weight: normal;border-collapse: collapse;border: 0;margin: 0;padding: 0;font-family: Arial, sans-serif;">
-                <tr>
-                  <td class="grey-block"
-                    style="border-collapse: collapse;border: 0;margin: 0;-webkit-text-size-adjust: none;color: #555559;font-family: Arial, sans-serif;font-size: 16px;line-height: 26px;background-color: #fff; text-align:center;">
-                    <div class="mktEditable" id="cta">
-                      <img class="top-image" src="http://localhost:8000/static/temp/images/webinar-no-text.png"
-                        width="560" /><br><br>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="top-padding"
-                    style="border-collapse: collapse;border: 0;margin: 0;padding: 15px 0;-webkit-text-size-adjust: none;color: #555559;font-family: Arial, sans-serif;font-size: 16px;line-height: 21px;">
-                    <hr size="1" color="#eeeff0">
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text"
-                    style="border-collapse: collapse;border: 0;margin: 0;padding: 0;-webkit-text-size-adjust: none;color: #555559;font-family: Arial, sans-serif;font-size: 16px;line-height: 26px;">
-                    <div class="mktEditable" id="main_text">
-                      Hello dear<br>
+      <td>&nbsp;</td>
+      <td class="container">
+        <div class="content">
 
-                      <b>You're receiving this email because you need to finish activation process on
-                        {{ site_name }}.</b><br>
+          <!-- START CENTERED WHITE CONTAINER -->
+          <table role="presentation" class="main">
 
-                      <div>Please click the following button to activate account:</div>
-                      <br>
+            <!-- START MAIN CONTENT AREA -->
+            <tr>
+              <td class="wrapper">
+                <table role="presentation" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td>
+                      <p>Hi there,</p>
+                      <p>
+                        You're receiving this email because you need to finish activation process on
+                        {{ site_name }} website.
+                      </p>
+                      <table role="presentation" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <table role="presentation" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <a href="{{ protocol }}://{{ domain }}/{{ url|safe }}"
+                                        target="_blank">Activate</a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p>If button not worked copy and paste below link to your browser</p>
+                      <p>
+                        <a style="font-size: 14px;"
+                          href="{{ protocol }}://{{ domain }}/{{ url|safe }}">{{ protocol }}://{{ domain }}/{{ url|safe }}
+                        </a>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
 
-                      <div class="mktEditable" id="download_button" style="text-align: center;">
-                        <a style="color:#ffffff; background-color: #ff8300; border: 30px solid #ff8300; border-left: 30px solid #ff8300; border-right: 30px solid #ff8300; border-top: 15px solid #ff8300; border-bottom: 15px solid #ff8300;border-radius: 3px; text-decoration:none;"
-                          href="{{ protocol }}://{{ domain }}/{{ url|safe }}">Activate</a>
-                      </div>
+            <!-- END MAIN CONTENT AREA -->
+          </table>
+          <!-- END CENTERED WHITE CONTAINER -->
 
-                    </div>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding:20px; font-family: Arial, sans-serif; -webkit-text-size-adjust: none;" align="center">
-              <table>
-                <tr>
-                  <td align="center"
-                    style="font-family: Arial, sans-serif; -webkit-text-size-adjust: none; font-size: 16px;">
-                    <span
-                      style="font-size:17px; font-family: Arial, sans-serif; -webkit-text-size-adjust: none;color: #555559;">
-                      if button not worked copy and paste below link to your browser
-                    </span>
-                    <a style="font-size: 14px;"
-                      href="{{ protocol }}://{{ domain }}/{{ url|safe }}">{{ protocol }}://{{ domain }}/{{ url|safe }}</a>
-                    <br />
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
+          <!-- START FOOTER -->
+          <div class="footer">
+            <table role="presentation" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="content-block">
+                  <span class="apple-link">Company Inc, 3 Abbey Road, San Francisco CA 94102</span>
+                  <br> Don't like these emails? <a href="http://i.imgur.com/CScmqnj.gif">Unsubscribe</a>.
+                </td>
+              </tr>
+              <tr>
+                <td class="content-block powered-by">
+                  Powered by <a href="http://htmlemail.io">HTMLemail</a>.
+                </td>
+              </tr>
+            </table>
+          </div>
+          <!-- END FOOTER -->
+
+        </div>
       </td>
+      <td>&nbsp;</td>
     </tr>
   </table>
 </body>
 
 
-
-
-{% endblock html_body %}
+{% endblock %}

@@ -1,5 +1,5 @@
 from rest_framework.views import APIView
-from rest_framework import authentication, permissions
+from rest_framework import authentication, permissions, views
 from rest_framework_simplejwt.views import TokenViewBase
 from .serializers import TokenDestroySerializer
 
