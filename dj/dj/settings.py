@@ -30,7 +30,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 DOMAIN = os.getenv('DOMAIN')
-SITE_NAME = 'Shop'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -70,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'dj.urls'
@@ -156,12 +156,18 @@ DJOSER = {
     'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
     'ACTIVATION_URL': '?uid={uid}&token={token}&action=activate',
     'PASSWORD_RESET_CONFIRM_URL': 'auth/{uid}/{token}/reset',
-    "TOKEN_MODEL": None,
+    'TOKEN_MODEL': None,
     'SERIALIZERS':
-        {
-            'user': 'users.serializers.MyUserSerializer',
-            'current_user': 'users.serializers.MyUserSerializer',
-        }
+    {
+        'user': 'users.serializers.MyUserSerializer',
+        'current_user': 'users.serializers.MyUserSerializer',
+    },
+    'EMAIL':
+    {
+        'activation': 'users.email.ActivationEmail',
+        'password_reset': 'users.email.PasswordResetEmail',
+        'password_changed_confirmation': 'users.email.PasswordChangedConfirmationEmail',
+    },
 }
 
 SIMPLE_JWT = {

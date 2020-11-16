@@ -1,16 +1,12 @@
 {% load static %}
 
-{% block subject %}
-[{{ site_name }}] Your password was reset
-{% endblock %}
-
-
-{% block html_body %}
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="{% static 'users/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{{BASE_URL}}static/users/main.css">
 </head>
 
 
@@ -32,8 +28,7 @@
                     <td>
                       <p>Hi there,</p>
                       <p>
-                        We wanted to let you know that your {{ site_name }} password was reset.
-                        If you did not perform this action, you can recover access.
+                        {% block message %}message{% endblock %}
                       </p>
                       <table role="presentation" cellpadding="0" cellspacing="0" class="btn btn-primary">
                         <tbody>
@@ -43,7 +38,11 @@
                                 <tbody>
                                   <tr>
                                     <td>
-                                      <a href="{{ protocol }}://{{ domain }}/{{ url|safe }}" target="_blank">Revocer</a>
+
+                                      <a href="{{ DOMAIN }}/{{ URL|safe }}" target="_blank">
+                                        {% block action_button %}Action Button{% endblock %}
+                                      </a>
+
                                     </td>
                                   </tr>
                                 </tbody>
@@ -54,8 +53,7 @@
                       </table>
                       <p>If button not worked copy and paste below link to your browser</p>
                       <p>
-                        <a style="font-size: 14px;"
-                          href="{{ protocol }}://{{ domain }}/{{ url|safe }}">{{ protocol }}://{{ domain }}/{{ url|safe }}
+                        <a style="font-size: 14px;" href="{{ DOMAIN }}/{{ URL|safe }}">{{ DOMAIN }}/{{ URL|safe }}
                         </a>
                       </p>
                     </td>
@@ -94,4 +92,5 @@
 </body>
 
 
-{% endblock %}
+
+</html>
