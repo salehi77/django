@@ -19,7 +19,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class CategoryView(views.APIView):
     def get(self, request, slug_title):
         instance = models.Category.objects.get(slug_title=slug_title)
-        serializer = serializers.ReadCategorySerializer(instance)
+        serializer = serializers.ReadCategorySerializer(instance, context={'request': request})
         return Response(serializer.data)
 
 
@@ -27,3 +27,11 @@ class CategoryView(views.APIView):
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProductSerializer
     queryset = models.Product.objects.all()
+
+
+
+class ProductView(views.APIView):
+    def get(self, request, slug_title):
+        instance = models.Product.objects.get(slug_title=slug_title)
+        serializer = serializers.ProductSerializer(instance, context={'request': request})
+        return Response(serializer.data)

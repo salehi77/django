@@ -45,19 +45,15 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField()
     imageAlt = models.CharField(max_length=255)
-    discount = models.DecimalField(
-        max_digits=5, decimal_places=2,
-        default=0,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(0)
-        ])
+    discount = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(0)])
     price = models.PositiveIntegerField()
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
 
     @property
     def average_rate(self):
+        # avg = self.rates.aggregate(Avg('rate'))['rate__avg']
+        # return avg if avg else 0
         return self.rates.aggregate(Avg('rate'))['rate__avg']
 
     @property

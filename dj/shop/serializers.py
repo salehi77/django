@@ -13,7 +13,7 @@ class ReadCategorySerializer(serializers.ModelSerializer):
 
     def get_fields(self):
         fields = super(ReadCategorySerializer, self).get_fields()
-        # fields['parent'] = ReadCategorySerializer()
+        fields['parent'] = ReadCategorySerializer()
         # fields['subcat'] = ReadCategorySerializer(many=True, read_only=True)
         # fields['products'] = ProductSerializer(many=True, read_only=True)
         return fields
@@ -30,8 +30,10 @@ class WriteCategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    category = ReadCategorySerializer()
+
     class Meta:
         model = models.Product
-        fields = ('title', 'slug_title', 'image', 'imageAlt', 'price', 'average_rate', 'count_reviews',)
+        fields = ('title', 'slug_title', 'image', 'imageAlt', 'price', 'average_rate', 'count_reviews', 'category',)
         # fields = '__all__'
         read_only_fields = ('slug_title',)

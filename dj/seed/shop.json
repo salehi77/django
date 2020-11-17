@@ -70,7 +70,7 @@
             "updated_at": "2020-10-24T11:43:29.854Z",
             "image": "21098a.jpg",
             "imageAlt": "pro alt 1",
-            "discount": "0.00",
+            "discount": "0",
             "price": 10,
             "category": 1,
             "owner": null
@@ -87,7 +87,7 @@
             "updated_at": "2020-10-24T11:43:37.342Z",
             "image": "21098a.jpg",
             "imageAlt": "pro alt 2",
-            "discount": "0.00",
+            "discount": "0",
             "price": 10,
             "category": 2,
             "owner": null
@@ -104,7 +104,7 @@
             "updated_at": "2020-10-24T11:43:47.918Z",
             "image": "21098a.jpg",
             "imageAlt": "pro alt 3",
-            "discount": "0.00",
+            "discount": "0",
             "price": 10,
             "category": 3,
             "owner": null
@@ -121,7 +121,7 @@
             "updated_at": "2020-10-24T11:44:00.839Z",
             "image": "21098a.jpg",
             "imageAlt": "pro alt 4",
-            "discount": "0.00",
+            "discount": "0",
             "price": 10,
             "category": 4,
             "owner": null

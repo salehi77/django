@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "password": "pbkdf2_sha256$216000$DmGzk0hnJu1u$HTvsg7dTDksoiUhTWDjb0ICsPsvqqLUddmYJ/cQSaSQ=",
-            "last_login": "2020-10-24T11:41:14.616Z",
+            "last_login": "2020-11-17T05:34:53.328Z",
             "is_superuser": true,
             "first_name": "",
             "last_name": "",
@@ -29,6 +29,23 @@
             "is_active": true,
             "date_joined": "2020-10-23T09:03:58.940Z",
             "email": "salehi@admin.com",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$sw7OknQlSsv0$WX1+aLwTKJwgLCxyU3GzGTY6Sh0uQwSfxLkn32pYIWk=",
+            "last_login": null,
+            "is_superuser": false,
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2020-11-17T05:54:27.460Z",
+            "email": "salehi2@admin.com",
             "groups": [],
             "user_permissions": []
         }
