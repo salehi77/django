@@ -45,7 +45,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField()
     imageAlt = models.CharField(max_length=255)
-    discount = models.IntegerField(validators=[MaxValueValidator(100), MinValueValidator(0)])
+    discount = models.IntegerField(default=0, validators=[MaxValueValidator(100), MinValueValidator(0)])
     price = models.PositiveIntegerField()
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='products')
@@ -97,3 +97,19 @@ class Rate(models.Model):
 
     def __str__(self):
         return '%s, %s, %d' % (self.user, self.product, self.rate)
+
+
+
+
+
+
+
+class Bookmark(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookmarks')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='bookmarks')
+
+    class Meta:
+        unique_together = ['user', 'product']
+
+    def __str__(self):
+        return '%s, %s' % (self.user, self.product)

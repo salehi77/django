@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
 from djoser.serializers import UserSerializer
 from .models import User
+from shop.serializers import BookmarkSerializer
 
 
 class TokenDestroySerializer(serializers.Serializer):
@@ -19,6 +20,8 @@ class TokenDestroySerializer(serializers.Serializer):
 
 
 class MyUserSerializer(UserSerializer):
+    bookmarks = BookmarkSerializer(many=True)
+
     class Meta:
         model = User
         fields = ('id',
@@ -26,6 +29,7 @@ class MyUserSerializer(UserSerializer):
                   'last_login',
                   #   'is_superuser',
                   'first_name',
+                  'avatar',
                   'last_name',
                   #   'is_staff',
                   'is_active',
@@ -33,5 +37,6 @@ class MyUserSerializer(UserSerializer):
                   'email',
                   'groups',
                   #   'user_permissions'
+                  'bookmarks',
                   )
         read_only_fields = ('id', 'last_login', 'date_joined', 'is_active',)

@@ -28,12 +28,21 @@ class WriteCategorySerializer(serializers.ModelSerializer):
 
 
 
+class BookmarkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Bookmark
+        fields = '__all__'
+
+
+
 
 class ProductSerializer(serializers.ModelSerializer):
     category = ReadCategorySerializer()
+    bookmarks = BookmarkSerializer(many=True)
 
     class Meta:
         model = models.Product
-        fields = ('title', 'slug_title', 'image', 'imageAlt', 'price', 'average_rate', 'count_reviews', 'category',)
+        fields = ('title', 'slug_title', 'description', 'image', 'imageAlt', 'price', 'discount',
+                  'average_rate', 'count_reviews', 'bookmarks', 'category',)
         # fields = '__all__'
         read_only_fields = ('slug_title',)
